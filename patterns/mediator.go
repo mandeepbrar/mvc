@@ -1,12 +1,12 @@
 package patterns
 
 import (
-	"mvc/api"
+	"github.com/mandeepbrar/mvc/interfaces"
 )
 
 type Mediator struct {
 	*Notifier
-	mediatorName string
+	mediatorName  string
 	viewComponent interface{}
 }
 
@@ -18,22 +18,22 @@ func (mediator *Mediator) GetMediatorName() string {
 	return mediator.mediatorName
 }
 
-func (mediator *Mediator)GetViewComponent() interface{} {
+func (mediator *Mediator) GetViewComponent() interface{} {
 	return mediator.viewComponent
 }
 
-func (mediator *Mediator)SetViewComponent(viewComponent interface{}) {
+func (mediator *Mediator) SetViewComponent(viewComponent interface{}) {
 	mediator.viewComponent = viewComponent
 }
 
-func (mediator *Mediator)ListNotificationInterests() []string {
+func (mediator *Mediator) ListNotificationInterests() []string {
 	return []string{}
 }
 
-func (mediator *Mediator)HandleNotification(notification api.Notification) {
+func (mediator *Mediator) HandleNotification(notification interfaces.Notification) {
 }
 
-func (mediator *Mediator)OnRegister() {
+func (mediator *Mediator) OnRegister() {
 
 }
 

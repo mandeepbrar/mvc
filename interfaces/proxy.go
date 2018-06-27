@@ -1,4 +1,4 @@
-package api 
+package interfaces
 
 type Proxy interface {
 	Notifier

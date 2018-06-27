@@ -1,15 +1,15 @@
 package core
 
 import (
-	"mvc/api"
+	"github.com/mandeepbrar/mvc/interfaces"
 )
 
 type observer struct {
-	context interface{};
-	notify api.NotificationFunction
+	context interface{}
+	notify  interfaces.NotificationFunction
 }
 
-func NewObserver(notify api.NotificationFunction, context interface{}) *observer {
+func NewObserver(notify interfaces.NotificationFunction, context interface{}) *observer {
 	obs := &observer{}
 	obs.SetNotifyContext(context)
 	obs.SetNotifyMethod(notify)
@@ -17,17 +17,17 @@ func NewObserver(notify api.NotificationFunction, context interface{}) *observer
 }
 
 func (obs *observer) CompareNotifyContext(object interface{}) bool {
-	return obs.context == object;
+	return obs.context == object
 }
 
-func (obs *observer) NotifyObserver(notification api.Notification) {
-	obs.notify(notification);
+func (obs *observer) NotifyObserver(notification interfaces.Notification) {
+	obs.notify(notification)
 }
 
 func (obs *observer) SetNotifyContext(notifyContext interface{}) {
-	obs.context = notifyContext;
+	obs.context = notifyContext
 }
 
-func (obs *observer) SetNotifyMethod(notifyMethod api.NotificationFunction) {
-	obs.notify = notifyMethod;
+func (obs *observer) SetNotifyMethod(notifyMethod interfaces.NotificationFunction) {
+	obs.notify = notifyMethod
 }

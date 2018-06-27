@@ -2,33 +2,33 @@ package patterns
 
 type Notifier struct {
 	multitonKey string
-	fac *facade
+	facade      *facade
 }
 
 func NewNotifier() *Notifier {
 	return &Notifier{}
 }
 
-func (not *Notifier) getFacade() *facade {
-	if (not.multitonKey == "") {
-		panic("Notifier not initialized");
+func (not *Notifier) GetFacade() *facade {
+	if not.multitonKey == "" {
+		panic("Notifier not initialized")
 	}
-	if(not.fac == nil)	 {
-		not.fac = GetFacadeInstance(not.multitonKey)
+	if not.facade == nil {
+		not.facade = GetFacadeInstance(not.multitonKey)
 	}
-	return not.fac
+	return not.facade
 }
 
 func (not *Notifier) SendNotification(name string, body interface{}, typeName string) {
-	fac := not.fac
-	if(fac == nil) {
-		fac = not.getFacade()
+	fac := not.facade
+	if fac == nil {
+		fac = not.GetFacade()
 	}
-	if fac!=nil {
+	if fac != nil {
 		fac.SendNotification(name, body, typeName)
 	}
 }
 
 func (not *Notifier) InitializeNotifier(key string) {
-	not.multitonKey = key;
+	not.multitonKey = key
 }

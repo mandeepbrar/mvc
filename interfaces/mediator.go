@@ -1,4 +1,4 @@
-package api
+package interfaces
 
 type Mediator interface {
 	Notifier
@@ -10,4 +10,3 @@ type Mediator interface {
 	OnRegister()
 	OnRemove()
 }
-

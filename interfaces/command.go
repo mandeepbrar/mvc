@@ -1,6 +1,6 @@
-package api
+package interfaces
 
-type Command interface{
+type Command interface {
 	Notifier
 	Execute(notification Notification)
 }

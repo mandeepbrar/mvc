@@ -1,6 +1,6 @@
-package api
+package interfaces
 
-type Controller interface{
+type Controller interface {
 	ExecuteCommand(Notification)
 	RegisterCommand(notificationName string, commandClassRef Command)
 	HasCommand(notificationName string) bool

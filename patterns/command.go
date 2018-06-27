@@ -1,7 +1,7 @@
 package patterns
 
 import (
-	"mvc/api"
+	"github.com/mandeepbrar/mvc/interfaces"
 )
 
 type SimpleCommand struct {
@@ -14,20 +14,20 @@ func NewSimpleCommand() *SimpleCommand {
 
 type MacroCommand struct {
 	*Notifier
-	subCommands []api.Command
+	subCommands []interfaces.Command
 }
 
 func NewMacroCommand() *MacroCommand {
-	return &MacroCommand{NewNotifier(), make([]api.Command, 0)}
+	return &MacroCommand{NewNotifier(), make([]interfaces.Command, 0)}
 }
 
-func (mc *MacroCommand) AddSubCommand(comm api.Command) {
+func (mc *MacroCommand) AddSubCommand(comm interfaces.Command) {
 	mc.subCommands = append(mc.subCommands, comm)
 }
 
-func (mc *MacroCommand) Execute(not api.Notification) {
-	for _, comm := range mc.subCommands { 
-		comm.InitializeNotifier( mc.multitonKey );
-		comm.Execute( not )
+func (mc *MacroCommand) Execute(not interfaces.Notification) {
+	for _, comm := range mc.subCommands {
+		comm.InitializeNotifier(mc.multitonKey)
+		comm.Execute(not)
 	}
 }

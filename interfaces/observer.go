@@ -1,6 +1,6 @@
-package api
+package interfaces
 
-type Observer interface{
+type Observer interface {
 	SetNotifyMethod(notifyMethod NotificationFunction)
 	SetNotifyContext(notifyContext interface{})
 	NotifyObserver(notification Notification)
